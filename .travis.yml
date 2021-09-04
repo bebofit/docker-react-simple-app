@@ -9,3 +9,15 @@ script:
   - docker run -e CI=true bebofit/docker-react-simple-app npm run test
 
 language: generic 
+
+deploy: 
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  name: "Docker react-simple-app"
+  env: "Dockerreactsimpleapp-env-1"
+  bucket_name: "elasticbeanstalk-eu-west-2-676343843741"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket_path: "Docker react-simple-app"
+  on:
+    branch: master
